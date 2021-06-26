@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "Cairo";
+  font-display: swap;
+  src: local("Cairo"), url(/fonts/Cairo-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Cairo-bold";
+  font-display: swap;
+  src: local("Cairo"), url(/fonts/Cairo-Bold.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Cairo-semi";
+  font-display: swap;
+  src: local("Cairo"), url(/fonts/Cairo-SemiBold.ttf) format("truetype");
+}
+
+a {
+  text-decoration: none;
+}
