@@ -1,9 +1,9 @@
 import * as React from "react";
-import Layout from "../components/layout/layout";
+import Layout from "../src/components/layout/layout";
 import { AppProps } from "next/app";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
-import MuiProvider from "../theme/provider";
+import MuiProvider from "../src/theme/provider";
 import { appWithTranslation } from "next-i18next";
 import "../styles/globals.css";
 

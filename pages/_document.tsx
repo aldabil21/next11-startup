@@ -3,8 +3,8 @@ import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import createEmotionServer from "@emotion/server/create-instance";
-import { initial } from "../theme/theme";
-import MuiProvider from "../theme/provider";
+import { initial } from "../src/theme/theme";
+import MuiProvider from "../src/theme/provider";
 
 function getCache() {
   const cache = createCache({ key: "css", prepend: true });
@@ -19,6 +19,9 @@ export default class MyDocument extends Document {
         <Head>
           {/* PWA primary color */}
           <meta name="theme-color" content={initial.palette.primary.main} />
+          {/* <base href="" /> uncomment if needed */}
+          <meta name="robots" content="index, follow" />
+          <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         </Head>
         <body>
           <Main />

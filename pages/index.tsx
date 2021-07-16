@@ -10,7 +10,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Seo from "../components/seo/seo";
+import Seo from "../src/components/seo/seo";
 
 const Home = () => {
   const { t, i18n } = useTranslation();
