@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { CacheProvider } from "@emotion/react";
@@ -14,17 +14,27 @@ const cacheRtl = createCache({
 });
 
 const MuiProvider = ({ children }: { children: JSX.Element }) => {
-  const { theme, setLocale } = useCustomTheme();
+  const { theme } = useCustomTheme();
   const { locale } = useRouter();
   const { i18n } = useTranslation();
 
-  React.useEffect(() => {
+  const setLocale = useCallback(
+    (lang?: string) => {
+      if (!lang || !i18n?.dir) return;
+      const dir = i18n?.dir(lang);
+      document.documentElement.lang = lang;
+      document.documentElement.dir = dir;
+    },
+    [i18n]
+  );
+
+  useEffect(() => {
     setLocale(locale);
-  }, [locale]);
+  }, [locale, setLocale]);
 
   let content = children;
 
-  if (i18n && i18n.dir(locale) === "rtl") {
+  if (i18n?.dir && i18n?.dir(locale) === "rtl") {
     content = <CacheProvider value={cacheRtl}>{children}</CacheProvider>;
   }
 

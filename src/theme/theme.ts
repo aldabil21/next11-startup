@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createTheme, responsiveFontSizes } from "@material-ui/core/styles";
-import { useTranslation } from "next-i18next";
+import { i18n } from "next-i18next";
 import { useRouter } from "next/router";
 
 export const initial = createTheme({
@@ -49,23 +49,14 @@ export const initial = createTheme({
 
 export const useCustomTheme = () => {
   const { locale } = useRouter();
-  const { i18n } = useTranslation();
   const [theme, setTheme] = useState(
     responsiveFontSizes({
       ...initial,
-      direction: i18n ? i18n.dir(locale) : "ltr",
+      direction: i18n?.dir ? i18n.dir(locale) : "ltr",
     })
   );
 
-  const setLocale = (lang?: string) => {
-    if (!lang || !i18n) return;
-    const dir = i18n.dir(lang);
-    document.documentElement.lang = lang;
-    document.documentElement.dir = dir;
-  };
-
   return {
     theme,
-    setLocale,
   };
 };

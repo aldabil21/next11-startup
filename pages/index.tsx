@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { GetStaticProps } from "next";
 import {
   Typography,
@@ -17,7 +18,7 @@ const Home = () => {
   const { asPath, locales } = useRouter();
 
   return (
-    <div>
+    <Fragment>
       <Seo
         title="Page Title"
         description="Page Description"
@@ -52,7 +53,7 @@ const Home = () => {
             ))}
         </div>
       </Container>
-    </div>
+    </Fragment>
   );
 };
 
